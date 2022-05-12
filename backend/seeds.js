@@ -3,7 +3,8 @@ var url = process.env.MONGODB_URI;
 
 MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
+    var dbo = db.db("anythink-market");
+
     for (let i = 0; i < 100; i++) {
         var user = {email: "ab_" + i  +"@ab.com", username: "ab"+i, password: "ab"};
         var item = {
@@ -15,7 +16,8 @@ MongoClient.connect(url, function(err, db) {
         var comment = {seller: user, item: item, body: "comment of item and seller " + i}
         dbo.collection("users").insertOne(user, function (err, res) {
             if (err) throw err;
-            console.log("1 user inserted");
+            console.log("1 user inserted: " + res);
+            db.close();
         });
 
 
@@ -31,8 +33,6 @@ MongoClient.connect(url, function(err, db) {
             console.log("1 comment inserted");
 
         });
-
-
     }
-    db.close();
+
 });
