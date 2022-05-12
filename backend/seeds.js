@@ -4,7 +4,7 @@ var url = process.env.MONGODB_URI;
 MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 100; i++) {
         var user = {email: "ab_" + i  +"@ab.com", username: "ab"+i, password: "ab"};
         var item = {
             title: "item_ab" + i,
