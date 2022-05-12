@@ -16,18 +16,16 @@ MongoClient.connect(url, function(err, db) {
         dbo.collection("users").insertOne(user, function (err, res) {
             if (err) throw err;
             console.log("1 user inserted");
-            db.close();
         });
 
         dbo.collection("items").insertOne(item, function (err, res) {
             if (err) throw err;
             console.log("1 item inserted");
-            db.close();
         });
 
         dbo.collection("comments").insertOne(comment, function (err, res) {
             if (err) throw err;
-            console.log("1 item inserted");
+            console.log("1 comment inserted");
             db.close();
         });
     }
